@@ -56,7 +56,12 @@ public class Login {
     }
     // Verifies that the login was successful by checking if the welcome message is displayed and matches the expected message
     public void verifyLoginSuccess(String expectedMessage) {
-        Assert.assertEquals(welcomeBackMessage.getText(), expectedMessage);
+        String actualMessage = welcomeBackMessage.getText();
+        if (welcomeBackMessage.isDisplayed()) {
+            Assert.assertEquals(actualMessage, expectedMessage, "Login success message should match expected");
+        } else {
+            Assert.fail("Login success message is not displayed");
+        }
     }
 
 }

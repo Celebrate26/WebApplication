@@ -1,5 +1,6 @@
 package Extras;
 
+import Screenshots.Screenshots;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

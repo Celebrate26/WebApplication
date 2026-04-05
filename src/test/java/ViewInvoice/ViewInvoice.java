@@ -16,6 +16,7 @@ public class ViewInvoice {
     public void viewInvoice() {
         driver.findElement(By.id("view-history-btn")).click();
     }
+    // Method to view the invoice details
     public void View(){
         driver.findElement(By.xpath("/html/body/div/div[1]")).click();
     }
