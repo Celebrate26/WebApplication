@@ -46,6 +46,7 @@ public class WebApplicationTest {
         screenshots.takesSnapShot(driver, "01_Login_Page");
         loginPage.enterEmailAddress("Okuhle@gmali.com");
         loginPage.enterPassword("@12345678");
+        screenshots.takesSnapShot(driver, "02_credentials_entered");
         Thread.sleep(2000);
         loginPage.clickSubmitButton();
         Thread.sleep(3000);
