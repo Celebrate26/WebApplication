@@ -7,6 +7,7 @@ import Screenshots.Screenshots;
 import ViewInvoice.ViewInvoice;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -21,14 +22,17 @@ public class WebApplicationTest {
     ViewInvoice viewInvoice;
     Screenshots screenshots;
 
-    @BeforeClass
-    public void setup() throws InterruptedException {
 
-        // Initialize WebDriver and navigate to the application
-        driver = new ChromeDriver();
-        driver.get("https://ndosisimplifiedautomation.vercel.app/");
-        Thread.sleep(2000);
-        driver.manage().window().maximize();
+        @BeforeClass
+        public void setup() {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless=new"); // Runs without opening a window
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--window-size=1920,1080");
+
+            driver = new ChromeDriver(options);
+            driver.get("https://ndosisimplifiedautomation.vercel.app/");
 
         // Initialize Page Objects
         loginPage = new Login(driver);

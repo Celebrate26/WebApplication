@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org">
+<suite name="Web Application Suite">
+
+    <test name="End to End Purchase Flow">
+        <classes>
+            <!-- This must match: packageName.ClassName -->
+            <class name="WebApplicationTest.WebApplicationTest" />
+        </classes>
+    </test>
+
+</suite>
+
