@@ -4,7 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import java.time.Duration;
 
 public class Login {
 
@@ -56,13 +60,16 @@ public class Login {
     }
     // Verifies that the login was successful by checking if the welcome message is displayed and matches the expected message
     public void verifyLoginSuccess(String expectedMessage) {
+        // Create a wait specifically for this verification
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Wait until the element is actually visible on the screen
+        wait.until(ExpectedConditions.visibilityOf(welcomeBackMessage));
+
         String actualMessage = welcomeBackMessage.getText();
-        if (welcomeBackMessage.isDisplayed()) {
-            Assert.assertEquals(actualMessage, expectedMessage, "Login success message should match expected");
-        } else {
-            Assert.fail("Login success message is not displayed");
-        }
+        Assert.assertEquals(actualMessage, expectedMessage, "Login success message should match expected");
     }
 
-}
+    }
+
 
